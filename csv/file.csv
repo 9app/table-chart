@@ -1,0 +1,6 @@
+Total Assets,Count,Percentage,Random
+Success,4000,40,True
+In Progress,1000,10,False
+Error,1000,10,True
+Requirements not met,2000,20,True
+Unknown,2000,20,True
