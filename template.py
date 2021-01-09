@@ -33,7 +33,8 @@ html_content = '''<!DOCTYPE html>
                     </table>
                 </div>
                 <div class="col-xl-3 col-lg-3">
-                    <canvas id="myChart-{{ loop.index }}" width="100" height="100"></canvas>
+                    <canvas id="myChart-{{ loop.index }}" width="0" height="0"></canvas>
+                    <img alt="Chart" id="myChart-{{ loop.index }}-img">
                 </div>
             </div>
         </div>
@@ -66,6 +67,13 @@ html_content = '''<!DOCTYPE html>
                                 beginAtZero: true
                             }
                         }]
+                    },
+                    animation: {
+                        onComplete: function() {
+                            // console.log(myChart.toBase64Image());
+                            document.getElementById('myChart-{{ loop.index }}-img').src = myChart.toBase64Image();
+                            document.getElementById('myChart-{{ loop.index }}').style.display = "None";
+                        }
                     }
                 }
             });
