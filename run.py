@@ -54,12 +54,14 @@ def create_chart(labels, values):
 
 
 # This is main function used to create HTML
-def create_html(filenames=sys.argv, label="Total Assets", value="Percentage"):
+def create_html(filenames, label, value):
     template = jinja2.Template(minified_html)
     chunks = get_chunks(filenames, label, value)
     list_of_csv = chunks[0]
     charts = chunks[1]
     return template.render(list_of_csv=list_of_csv, charts=charts)
+
+# Edit this according to your CSV file.
 # Executing the function
-running_function = str(create_html().encode("utf-8"))
+running_function = str(create_html(filenames=sys.argv, label="Total Assets", value="Percentage").encode("utf-8"))
 print(running_function[2:])
