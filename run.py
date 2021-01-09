@@ -62,6 +62,5 @@ def create_html(filenames, label, value):
     return template.render(list_of_csv=list_of_csv, charts=charts)
 
 # Edit this according to your CSV file.
-print(create_html(filenames=sys.argv, label="Total Assets", value="Percentage").encode("utf-8"))
-# app = str(create_html(filenames=sys.argv, label="Total Assets", value="Percentage").encode("utf-8"))
-# print(app[2:])
+app = str(create_html(filenames=sys.argv, label="Total Assets", value="Percentage").encode("utf-8"))
+print(app[2:])
