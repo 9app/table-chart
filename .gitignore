@@ -1,3 +1,7 @@
-__pychache__
+__pycache__
+.ipynb_checkpoints*
 csv/*
 temp.html
+notebook*
+img/*
+plot*
