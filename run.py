@@ -24,8 +24,8 @@ def get_chunks(filenames, label, value):
         the_csv = load_csv(args)
         list_of_csv.append(the_csv)
         # Getting Percentage and Labels
-        index_of_label = the_csv[index].index(label)
-        index_of_value = the_csv[index].index(value)
+        index_of_label = the_csv[0].index(label)
+        index_of_value = the_csv[0].index(value)
         labels_ = []
         values_ = []
         for item in the_csv[1]:
@@ -43,9 +43,9 @@ def create_chart(labels, values):
                     "#e5edf1","#87cefa","#aec9eb","#efc5b5","#e1d590","#d3b683",
                     "#e5ccbd","#d2bfc4","#ccfd7f","#b7d24b","#befd73","#64bfa4",
                     "#bf77f6"]
-    plt.figure(figsize=(5,5))
     image_names = []
     for index, label in enumerate(labels):
+        plt.figure(figsize=(5,5))
         plt.pie(values[index], labels=label, autopct="%.1f%%", colors=color_list[:len(label)])
         image_name = "img\\plot"+ str(index) + ".png"
         plt.savefig(image_name)

@@ -1,6 +1,6 @@
 Total Assets,Count,Percentage
-Success,4000,40
+Success,4000,60
 In Progress,1000,10
 Error,1000,10
 Requirements not met,2000,20
-Unknown,2000,20
+Unknown,2000,400
