@@ -1,5 +1,4 @@
 import csv, sys, jinja2
-from template import minified_html
 import matplotlib.pyplot as plt
 
 # This function loads CSV to header and list_of_rows variables
@@ -47,20 +46,23 @@ def create_chart(labels, values):
     for index, label in enumerate(labels):
         plt.figure(figsize=(5,5))
         plt.pie(values[index], labels=label, autopct="%.1f%%", colors=color_list[:len(label)])
-        image_name = "img\\plot"+ str(index) + ".png"
-        plt.savefig(image_name)
+        image_name = "plot" + str(index) + ".png"
+        plt.savefig("img\\" + image_name)
         image_names.append(image_name)
     return image_names
 
 
 # This is main function used to create HTML
 def create_html(filenames, label, value):
-    template = jinja2.Template(minified_html)
+    with open('template.html', 'r') as f:
+        html_content = f.read()
+    template = jinja2.Template(html_content)
     chunks = get_chunks(filenames, label, value)
     list_of_csv = chunks[0]
     charts = chunks[1]
     return template.render(list_of_csv=list_of_csv, charts=charts)
 
 # Edit this according to your CSV file.
-app = str(create_html(filenames=sys.argv, label="Total Assets", value="Percentage").encode("utf-8"))
-print(app[2:])
+# app = str(create_html(filenames=sys.argv, label="Total Assets", value="Percentage").encode("utf-8"))
+# print(app[2:])
+print(create_html(filenames=sys.argv, label="Total Assets", value="Percentage"))
